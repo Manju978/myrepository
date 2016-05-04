@@ -20,4 +20,19 @@ ModelAndView model=new ModelAndView("index");
 
 return model;
 }
+
+@RequestMapping("/register")
+public ModelAndView hello2()
+{
+ModelAndView model=new ModelAndView("register");	
+
+return model;
+}
+@RequestMapping("/product")
+public ModelAndView hello3()
+{
+ModelAndView model=new ModelAndView("product");	
+
+return model;
+}
 }
