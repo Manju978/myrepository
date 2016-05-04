@@ -17,6 +17,7 @@
   }
     </style>    
     </head>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <body>
    
   <nav class="navbar navbar-inverse">
@@ -60,7 +61,7 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="resources/images/1.jpg" alt="Image1">
+      <img src="<c:url value="resources/images/1.jpg"/>"/>
                 
       </div>
 
