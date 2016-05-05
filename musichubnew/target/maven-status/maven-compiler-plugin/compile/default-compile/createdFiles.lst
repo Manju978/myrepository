@@ -1,0 +1,7 @@
+model\productmodel.class
+musichubnew\controller\productcontroller.class
+musichubnew\controller\ProductService.class
+dao\productdao.class
+dao\productdaointerface.class
+musichubnew\controller\HelloControl.class
+musichubnew\controller\productserviceinterface.class

@@ -4,21 +4,34 @@
 
 
 <html lang="en">
+<%@ page isELIgnored="false"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+     <c:url value="/resources/images" var="img" />
+    <c:url value="/resources/bootstrap/js" var="bjs" />
+    <c:url value="/resources/bootstrap/css" var="bcss" />
 <head>
     <meta charset="UTF-8">
     <title>Let's Rock</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/product.css">
+    <link rel="stylesheet" href="${bcss}/bootstrap.min.css">
+    <link rel="stylesheet" href="${bcss}/product.css">
     <style type="text/css">
         body { padding-top:50px; }
     </style>
 
     <!-- JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-    <script src="js/product.js"></script>
-
+    <!-- <script src="${bjs}/product.js"></script> -->
+    
+    <script type="text/javascript">
+    angular.module('sortApp', [])
+    .controller('mainController', function($scope)
+    		{
+      // create the list  
+      $scope.music = <%=request.getAttribute("productlist")%>
+    });    
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -102,10 +115,10 @@
     
     <tbody>
       <tr ng-repeat="roll in music | orderBy:sortType:sortReverse | filter:searchMusic">
-        <td>{{ roll.id }}</td>
-        <td>{{ roll.name }}</td>
-        <td>{{ roll.brand }}</td>
-       <td>{{ roll.price }}</td>
+        <td>{{roll.PdctID}}</td>
+        <td>{{roll.MusicType}}</td>
+        <td>{{roll.Brand}}</td>
+       <td>{{roll.Price}}</td>
       </tr>
     </tbody>
     
