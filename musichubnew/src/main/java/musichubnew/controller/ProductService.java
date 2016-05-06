@@ -13,6 +13,13 @@ public class ProductService
 {
 @Autowired
 productdao productDao;
+
+public productdao getProductDao() {
+
+	return productDao;
+	
+}
+
 public List<productmodel> getproductlist()
 {
 	return productDao.getproductlist();	

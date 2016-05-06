@@ -1,18 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-
 <html lang="en">
 <%@ page isELIgnored="false"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
      <c:url value="/resources/images" var="img" />
     <c:url value="/resources/bootstrap/js" var="bjs" />
     <c:url value="/resources/bootstrap/css" var="bcss" />
 <head>
     <meta charset="UTF-8">
     <title>Let's Rock</title>
-
     <!-- CSS -->
     <link rel="stylesheet" href="${bcss}/bootstrap.min.css">
     <link rel="stylesheet" href="${bcss}/product.css">
@@ -76,16 +73,13 @@
     </div>
   </form>
   <table class="table table-bordered table-striped">
-    
-
-    <thead>
+<thead>
       <tr>
         <td>
           <a href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse">
             Pdct ID 
             <span ng-show="sortType == 'id' && !sortReverse" class="glyphicon glyphicon-arrow-up"></span>
-            <span ng-show="sortType == 'id' && sortReverse" class="glyphicon glyphicon-arrow-down"></span>
-         
+            <span ng-show="sortType == 'id' && sortReverse" class="glyphicon glyphicon-arrow-down"></span>         
           </a>
         </td>
         <td>
@@ -110,28 +104,34 @@
             <span ng-show="sortType == 'price' && sortReverse" class="glyphicon glyphicon-arrow-up"></span>
           </a>
         </td>
+
       </tr>
-    </thead>
-    
+    </thead> 
     <tbody>
+   
       <tr ng-repeat="roll in music | orderBy:sortType:sortReverse | filter:searchMusic">
-        <td>{{roll.PdctID}}</td>
+        <td>{{roll.PdctID}}     <form action="display" method="post">       
+       <input type="hidden" name="pid" value="{{roll.PdctID}}"/> 
+        <input type="submit" value="More"/>
+         </form></td>
         <td>{{roll.MusicType}}</td>
         <td>{{roll.Brand}}</td>
        <td>{{roll.Price}}</td>
+       <td>{{roll.More}}</td>
+<td>
+         
+        </td>
       </tr>
+   
+      </form>
     </tbody>
-    
-  </table>
-  
+  </table>  
   <p class="text-center text-muted">
     <a href="#">more info about MH</a>
   </p>
-  
   <p class="text-center">
     by <a href="index">Musichub</a>
-  </p>
-  
+  </p>  
 </div><br>
  <footer class="container-fluid text-center">
   <p>Copyright:MH email:manju@mh.com</p>

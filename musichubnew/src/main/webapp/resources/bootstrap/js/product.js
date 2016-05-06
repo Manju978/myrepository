@@ -7,10 +7,10 @@ angular.module('sortApp', [])
   
   // create the list  
   $scope.music = [
-    { id: '1102', name: 'violin', brand: 'A', price:'100'},
-    { id: '1103', name: 'flute', brand: 'B', price:'200'},
-    { id: '1104', name: 'guitar', brand: 'C', price:'300'},
-    { id: '1105', name: 'tabla', brand: 'D', price:'400'}
+    { id: '1102', name: 'violin', brand: 'A', price:'100',more:'more'},
+    { id: '1103', name: 'flute', brand: 'B', price:'200',more:'more'},
+    { id: '1104', name: 'guitar', brand: 'C', price:'300',more:'more'},
+    { id: '1105', name: 'tabla', brand: 'D', price:'400',more:'more'}
   ];
   
 });

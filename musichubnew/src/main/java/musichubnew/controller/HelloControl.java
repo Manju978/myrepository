@@ -4,19 +4,19 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 
-import musichubnew.dao.productdao;
 import musichubnew.model.productmodel;
+
 
 
 @Controller
 public class HelloControl 
 {
-	
 	@Autowired
 	ProductService  pservice;
 	@RequestMapping("/product")
@@ -26,13 +26,11 @@ public class HelloControl
 	Gson gson=new Gson();
 		List<productmodel> list = pservice.getproductlist();
 		String json=gson.toJson(list);
-	    System.out.println(json);
+	System.out.println(json);
 		ModelAndView model=new ModelAndView("product");	
 		model.addObject("productlist",json);
 		return model;
 	}
-
-
 	@RequestMapping("/welcome")
 	public ModelAndView hello()
 	{
@@ -44,6 +42,13 @@ public class HelloControl
 	public ModelAndView hello2()
 	{
 		ModelAndView model=new ModelAndView("register");	
+
+		return model;
+	}
+	@RequestMapping("/display")
+	public ModelAndView hello3(@ModelAttribute("p") productmodel product)
+	{
+		ModelAndView model=new ModelAndView("display");	
 
 		return model;
 	}
