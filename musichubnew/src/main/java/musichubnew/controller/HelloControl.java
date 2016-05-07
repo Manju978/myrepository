@@ -12,8 +12,6 @@ import com.google.gson.Gson;
 
 import musichubnew.model.productmodel;
 
-
-
 @Controller
 public class HelloControl 
 {
@@ -52,5 +50,13 @@ public class HelloControl
 
 		return model;
 	}
-	
+
+	@RequestMapping("/savedata")
+	public ModelAndView hello4()
+	{
+		pservice.getProductDao().saveProduct(new productmodel());
+		ModelAndView model=new ModelAndView("display");	
+
+		return model;
+	}
 }

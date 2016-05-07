@@ -1,6 +1,5 @@
 package musichubnew.dao;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -15,12 +14,10 @@ import org.springframework.stereotype.Repository;
 
 import musichubnew.model.productmodel;
 
-
 @Repository("productDao")
 public class productdao implements productdaointerface
 {
-	Session sess;
-	 productmodel product;
+	
 	    @Autowired 
 	    private SessionFactory sessionFactory;
 	   
@@ -29,14 +26,19 @@ public class productdao implements productdaointerface
 			return sessionFactory.openSession();
 					
 		}
-
+	    
 		public void saveProduct(productmodel prod) {
 			
 			Session sess = getSession();
 			System.out.println(sess);
-			if(sess!=null){
-			Transaction tx=sess.getTransaction();
-			System.out.println("Session Object is : "+sess);
+			if(sess!=null)
+			{
+			Transaction tx=sess.beginTransaction();
+		//	System.out.println("Session Object is : "+sess);
+			prod.setPdctID(103);
+			prod.setBrand("B");
+			prod.setMusicType("guitar");
+			prod.setPrice("2000");
 			sess.save(prod);
 		    System.out.println("Product Object Saved Successfully");
 			tx.commit();
@@ -46,10 +48,14 @@ public class productdao implements productdaointerface
 public List<productmodel> getproductlist()
 {   
 	
-	List<productmodel> modellist=new ArrayList<productmodel>();
+	Session sess = getSession();
+	Transaction tx = sess.beginTransaction();
+	List<productmodel> products= null;	
+	Query query=sess.createQuery("from productmodel");
+	products=(List<productmodel>)query.list();
+	tx.commit();
+	sess.close();
 	
-	//Query query=sess.createQuery("select PdctID from productmodel");
-	//List list=query.list();  
-	return modellist;	
-}
+	return products;	
+ }
 }
