@@ -126,12 +126,16 @@
       </form>
     </tbody>
   </table>  
+    <p class="text-center text-muted">
+    <a href="admin">Add a new product</a>
+  </p>
   <p class="text-center text-muted">
     <a href="#">more info about MH</a>
   </p>
   <p class="text-center">
     by <a href="index">Musichub</a>
   </p>  
+ 
 </div><br>
  <footer class="container-fluid text-center">
   <p>Copyright:MH email:manju@mh.com</p>

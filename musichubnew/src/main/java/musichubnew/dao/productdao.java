@@ -58,4 +58,29 @@ public List<productmodel> getproductlist()
 	
 	return products;	
  }
+
+public void addProduct(productmodel prod)
+{
+	
+	Session sess=sessionFactory.getCurrentSession();
+	sess.persist(prod);
+	
+}
+
+
+public void updateProduct(productmodel prod) 
+{
+Session sess=sessionFactory.getCurrentSession();
+sess.update(prod);
+}
+
+public void removeProduct(int pid)
+{
+Session sess=sessionFactory.getCurrentSession();
+productmodel p=(productmodel) sess.load(productmodel.class,new Integer(pid));
+if(sess!=p)
+{
+	sess.delete(p);
+}
+}
 }
